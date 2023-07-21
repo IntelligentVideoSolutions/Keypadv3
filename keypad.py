@@ -15,8 +15,8 @@ class Keypad(FloatLayout):
 	def PressButton(self,instance):
 		self.ids["display_label"].text = self.ids["display_label"].text + instance.text
 		if len(self.ids["display_label"].text) == self.pinlength:
-			self.PinEntered()
-	def PinEntered(self):
+			self.event_Pin_Entered = Clock.schedule_once(self.PinEntered, .25)
+	def PinEntered(self,dt):
 		print("pin entered")
 		enteredcode = self.ids["display_label"].text
 		self.clear_display_label(0)
